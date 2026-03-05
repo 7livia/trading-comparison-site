@@ -56,13 +56,20 @@ jobs:
           VITE_ANALYTICS_ENDPOINT: 'https://analytics.example.com'
           VITE_ANALYTICS_WEBSITE_ID: 'placeholder'
 
+      - name: Check build output
+        run: |
+          echo "Checking dist directory..."
+          ls -la dist/ || echo "dist/ does not exist"
+          echo "Checking dist/public directory..."
+          ls -la dist/public/ || echo "dist/public/ does not exist"
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '/dist/public'
+          path: 'dist/public'
 
   deploy:
     environment:
