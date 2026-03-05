@@ -2,6 +2,12 @@
 
 A modern, data-driven web application that helps investors compare the top stock trading platforms side-by-side. Built with React 19, Tailwind CSS 4, and shadcn/ui components for a professional, minimalist design.
 
+![img](https://i.imgur.com/b11fuM9.png)
+![img](https://i.imgur.com/WFeTiRQ.png)
+![img](https://i.imgur.com/uRs4XPg.png)
+![img](https://i.imgur.com/IgcvYvp.png)
+![img](https://i.imgur.com/FqXw5xS.png)
+
 ## Features
 
 **Comprehensive Platform Comparison**: Compare 10 major trading platforms including Fidelity, Charles Schwab, E*TRADE, TD Ameritrade, Interactive Brokers, Webull, tastytrade, Ally Invest, Merrill Edge, and Firstrade.
