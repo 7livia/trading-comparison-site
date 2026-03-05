@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
 
 permissions:
   contents: read
@@ -34,19 +31,6 @@ jobs:
         with:
           version: 10
 
-      - name: Get pnpm store directory
-        shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - name: Setup pnpm cache
-        uses: actions/cache@v3
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
       - name: Install dependencies
         run: pnpm install
 
@@ -56,20 +40,13 @@ jobs:
           VITE_ANALYTICS_ENDPOINT: 'https://analytics.example.com'
           VITE_ANALYTICS_WEBSITE_ID: 'placeholder'
 
-      - name: Check build output
-        run: |
-          echo "Checking dist directory..."
-          ls -la dist/ || echo "dist/ does not exist"
-          echo "Checking dist/public directory..."
-          ls -la dist/public/ || echo "dist/public/ does not exist"
-
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: 'dist/public'
+          path: 'dist'
 
   deploy:
     environment:
